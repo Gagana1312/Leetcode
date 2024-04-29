@@ -13,14 +13,5 @@ class Solution(object):
             unique_emails.add(word)
         return len(unique_emails)
         
-#         unique_emails = set()
-#         count=0
-#         for word in emails:
-#             if '.' in word or '@' in word or '+' in word:
-#                 if word not in unique_emails:
-#                     count+=1
-#                     unique_emails.add(word)
-        
-#         return count
-                
+     
             
