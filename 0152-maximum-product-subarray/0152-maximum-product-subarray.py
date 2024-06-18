@@ -12,3 +12,6 @@ class Solution:
             curMin = min(temp, n*curMin,n)
             res = max(curMax, res)
         return res
+
+        #O(n) time complexity
+        #O(1) memory complexity
