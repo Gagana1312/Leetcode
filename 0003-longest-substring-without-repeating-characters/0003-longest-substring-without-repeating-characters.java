@@ -16,17 +16,30 @@ class Solution {
 
         // }
         // return maxlength;
-
+        
+        
+        //works
+        // int maxlength =0;
+        // HashMap<Character, Integer> visited = new HashMap<>();
+        // for (int right = 0,left = 0; right< s.length();right++){
+        //     char currchar = s.charAt(right);
+        //     if(visited.containsKey(currchar) && visited.get(currchar) >= left){
+        //         left = visited.get(currchar)+1;
+        //     }
+        //     maxlength = Math.max( maxlength, right-left+1);
+        //     visited.put(currchar,right);
+        // }
+        // return maxlength;
+        
         int maxlength =0;
-        HashMap<Character, Integer> visited = new HashMap<>();
-        for (int right = 0,left = 0; right< s.length();right++){
-            char currchar = s.charAt(right);
-            if(visited.containsKey(currchar) && visited.get(currchar) >= left){
-                left = visited.get(currchar)+1;
+        for(int right=0, left =0;right<s.length();right++){
+            int indexOfFirstAppearanceInSubstring = s.indexOf(s.charAt(right), left);
+            if(indexOfFirstAppearanceInSubstring != right){
+                left = indexOfFirstAppearanceInSubstring+1;
             }
             maxlength = Math.max( maxlength, right-left+1);
-            visited.put(currchar,right);
         }
         return maxlength;
     }
+    
 }
