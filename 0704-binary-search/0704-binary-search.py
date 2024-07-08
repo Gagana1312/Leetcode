@@ -13,7 +13,8 @@ class Solution(object):
         #     if target == nums[i]:
         #         return i
         # return
-
+        
+        #(O(logn))
         start, end = 0, len(nums)-1
 
         while start <= end:
