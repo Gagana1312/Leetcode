@@ -1,17 +1,23 @@
-class Solution:
-    def findDuplicate(self, nums: List[int]) -> int:
-        slow, fast=0,0
-        while True:
-            slow = nums[slow]
-            fast = nums[nums[fast]]
-            if slow == fast:
-                break
+class Solution(object):
+    def findDuplicate(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        #Supposed to use linkedList
+        unique= set()
+        res =0
+        for n in nums:
+            if n not in unique:
+                unique.add(n)
+            else:
+                return n
+
         
-        slow2 = 0
-        while True:
-            slow = nums[slow]
-            slow2 = nums[slow2]
-            if slow == slow2:
-                return slow
+        
+        
+
+
+        
 
         
