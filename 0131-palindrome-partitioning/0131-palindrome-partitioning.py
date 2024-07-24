@@ -14,6 +14,8 @@ class Solution:
                     part.pop()
         dfs(0)
         return res
+    
+    
     def isPalindrome(self, s, l, r):
         while l<r:
             if s[l]!= s[r]:
