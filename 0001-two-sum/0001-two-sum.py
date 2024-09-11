@@ -1,12 +1,19 @@
-class Solution:
-    def twoSum(self, nums: List[int], target: int) -> List[int]:
-        prevMap = {} #map that contains both key:value
-
-        for i,n in enumerate(nums):
-            difference = target - n
-            if difference in prevMap:
-                return [prevMap[difference],i]
-            prevMap[n]=i
-        return
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        result = []
+        for i in range(len(nums)):
+            diff = target - nums[i]
+            if diff in nums and nums.index(diff) != i:
+                index = nums.index(diff)
+                result =[i, index]
+                break
+            else:
+                result=[]
+        return result
 
         
