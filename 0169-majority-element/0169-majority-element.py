@@ -28,12 +28,19 @@ class Solution(object):
         #     count+=(1 if n == res else -1)
         # return res
 
-        maj=0
-        for i in nums:
-            if i!=maj:
-                if nums.count(maj)<nums.count(i):
-                    maj=i
-        return maj
+        # maj=0
+        # for i in nums:
+        #     if i!=maj:
+        #         if nums.count(maj)<nums.count(i):
+        #             maj=i
+        # return maj
+        frequency_dict = dict(Counter(nums))
+        return max(frequency_dict, key=frequency_dict.get)
+        
+
+
+
+
 
 
 
