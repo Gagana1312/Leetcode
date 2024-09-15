@@ -13,19 +13,36 @@ class Solution(object):
         :type head: Node
         :rtype: Node
         """
-        oldToCopy ={None: None}
+        # oldToCopy ={None: None}
+        # curr = head
+        # #create the copy of the nods first.
+        # while curr:
+        #     copy =Node(curr.val)
+        #     oldToCopy[curr]=copy
+        #     curr=curr.next
+        # curr=head
+        # #connect the points to the copied nodes.
+        # while curr:
+        #     copy = oldToCopy[curr]
+        #     copy.next = oldToCopy[curr.next]
+        #     copy.random = oldToCopy[curr.random]
+        #     curr=curr.next
+        
+        # return oldToCopy[head]
+
+        if not head: return None
         curr = head
-        #create the copy of the nods first.
+        oldtonew ={}
+
         while curr:
-            copy =Node(curr.val)
-            oldToCopy[curr]=copy
+            node= Node(x=curr.val)
+            oldtonew[curr]=node
             curr=curr.next
         curr=head
-        #connect the points to the copied nodes.
+
         while curr:
-            copy = oldToCopy[curr]
-            copy.next = oldToCopy[curr.next]
-            copy.random = oldToCopy[curr.random]
+            newnode=oldtonew[curr]
+            newnode.next=oldtonew[curr.next] if curr.next else None
+            newnode.random=oldtonew[curr.random] if curr.random else None
             curr=curr.next
-        
-        return oldToCopy[head]
+        return oldtonew[head]
