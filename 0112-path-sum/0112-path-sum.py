@@ -12,8 +12,6 @@ class Solution(object):
         :rtype: bool
         """
         
-        res=[True]
-
         def dfs(root, cur_sum):
             if not root:
                 return False
