@@ -1,5 +1,9 @@
-class Solution:
-    def lastStoneWeight(self, stones: List[int]) -> int:
+class Solution(object):
+    def lastStoneWeight(self, stones):
+        """
+        :type stones: List[int]
+        :rtype: int
+        """
         stones = [-s for s in stones]
         heapq.heapify(stones)
 
@@ -11,7 +15,4 @@ class Solution:
 
         stones.append(0)
         return abs(stones[0])
-
-
-
         
