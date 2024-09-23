@@ -7,38 +7,33 @@ class Solution(object):
         """
 
 
-        count = {}
-        freq = [[] for i in range(len(nums)+1)]
-
-        for n in nums:
-            count[n] = 1 + count.get(n,0)
-        for n,c in count.items():
-            freq[c].append(n)
-        
-        res = []
-        for i in range(len(freq)-1,0,-1):
-            for n in freq[i]:
-                res.append(n)
-                if len(res)==k:
-                    return res
-
-
-
-
         # count = {}
-        # freq = [[] for i in range(len(nums) + 1)]
+        # freq = [[] for i in range(len(nums)+1)]
 
         # for n in nums:
-        #     count[n] = 1 + count.get(n, 0)
-        # for n, c in count.items():
+        #     count[n] = 1 + count.get(n,0)
+        # for n,c in count.items():
         #     freq[c].append(n)
-
+        
         # res = []
-        # for i in range(len(freq) - 1, 0, -1):
+        # for i in range(len(freq)-1,0,-1):
         #     for n in freq[i]:
         #         res.append(n)
-        #         if len(res) == k:
+        #         if len(res)==k:
         #             return res
+
+
+        counter = Counter(nums)
+
+        heap = []
+        
+        for key, val in counter.items():
+            if len(heap)<k:
+                heapq.heappush(heap,(val,key))
+            else:
+                heapq.heappushpop(heap,(val,key))
+        
+        return [h[1] for h in heap]
 
         
         
