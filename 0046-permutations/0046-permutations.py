@@ -13,15 +13,36 @@ class Solution:
 
 
 #         return res
-        perms =[[]]
+        
+        # perms =[[]]
 
-        for n in nums:
-            new_perms = []
-            for p in perms:
-                for i in range(len(p)+1):
-                    p_copy = p.copy()
-                    p_copy.insert(i,n)
-                    new_perms.append(p_copy)
-            perms = new_perms
-        return perms
+        # for n in nums:
+        #     new_perms = []
+        #     for p in perms:
+        #         for i in range(len(p)+1):
+        #             p_copy = p.copy()
+        #             p_copy.insert(i,n)
+        #             new_perms.append(p_copy)
+        #     perms = new_perms
+        # return perms
+
+
+
+
+        # BackTracking
+        n= len(nums)
+        res,sol=[],[]
+
+        def dfs():
+            if len(sol) == n:
+                res.append(sol[:])
+                return
+            
+            for i in nums:
+                if i not in sol:
+                    sol.append(i)
+                    dfs()
+                    sol.pop()
+        dfs()
+        return res
          
