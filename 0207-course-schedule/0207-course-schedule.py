@@ -30,5 +30,5 @@ class Solution(object):
 
         for c in range(numCourses):
             if not dfs(c):
-                return []
-        return output      
+                return False
+        return True      
