@@ -1,26 +1,34 @@
-class Solution:
-    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
-        #map each course to the prerequisite lst
-        preMap = {i:[] for i in range(numCourses)}
-        #crs = []
+class Solution(object):
+    def canFinish(self, numCourses, prerequisites):
+        """
+        :type numCourses: int
+        :type prerequisites: List[List[int]]
+        :rtype: bool
+        """
+
+        prereq = {c:[] for c in range(numCourses)}
         for crs, pre in prerequisites:
-            preMap[crs].append(pre)
-        
-        #visitedSet = all courses along the current path
-        vs = set()
+            prereq[crs].append(pre)
+
+        output =[]
+        cycle, visit= set(),set()
         def dfs(crs):
-            if crs in vs:
+            if crs in cycle:
                 return False
-            if preMap[crs] == []:
+            if crs in visit:
                 return True
-            
-            vs.add(crs)
-            for pre in preMap[crs]:
-                if not dfs(pre): return False
-            vs.remove(crs)
-            preMap[crs] = []
+
+            cycle.add(crs)
+            for pre in prereq[crs]:
+                if not dfs(pre):
+                    return False
+
+            cycle.remove(crs)
+            visit.add(crs)
+            output.append(crs)
             return True
-        
-        for crs in range(numCourses):
-            if not dfs(crs): return False
-        return True
+
+        for c in range(numCourses):
+            if not dfs(c):
+                return []
+        return output      
