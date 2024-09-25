@@ -1,21 +1,23 @@
-class Solution:
-    def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
-        ROWS = len(grid)
-        COLS = len(grid[0])
-        visit = set()
+class Solution(object):
+    def maxAreaOfIsland(self, grid):
+        """
+        :type grid: List[List[int]]
+        :rtype: int
+        """
+        m,n = len(grid), len(grid[0])
+        max_area =0
 
-        def dfs(r,c):
-            if(r<0 or r== ROWS or c== COLS or c<0 or grid[r][c]==0 or(r,c) in visit):
+        def dfs(i,j):
+            if i<0 or i>=m or j<0 or j>=n or grid[i][j]!=1 :
                 return 0
-            visit.add((r,c))
-            return (1+  dfs(r+1,c)+
-                        dfs(r,c+1)+
-                        dfs(r-1,c)+
-                        dfs(r,c-1))
-        area=0
-        for r in range(ROWS):
-            for c in range(COLS):
-                area = max(area, dfs(r,c))
-        return area
+            else:
+                grid[i][j]=0
+                res = (1+ dfs(i+1,j)+ dfs(i,j+1)+ dfs(i-1,j)+ dfs(i,j-1))
+                return res
 
-        
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j]==1:
+                    max_area = max(max_area, dfs(i,j))
+
+        return max_area
