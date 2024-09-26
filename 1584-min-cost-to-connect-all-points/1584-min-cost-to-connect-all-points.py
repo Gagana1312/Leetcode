@@ -1,5 +1,9 @@
-class Solution:
-    def minCostConnectPoints(self, points: List[List[int]]) -> int:
+class Solution(object):
+    def minCostConnectPoints(self, points):
+        """
+        :type points: List[List[int]]
+        :rtype: int
+        """
         N= len(points)
 
         adj = { i:[] for i in range(N)} # i:list of[cost, node]
@@ -26,12 +30,4 @@ class Solution:
                     heapq.heappush(minH, [neiCost, nei])
         
         return res
-
-
-
-
-
-
-
-
         
