@@ -1,15 +1,9 @@
-class Solution:
-    def lengthOfLIS(self, nums: List[int]) -> int:
-        # l,r =0,1
-        # res = []
-
-        # while l<r and r<=len(nums):
-        #     if nums[l]<nums[r]:
-        #         nums.remove(nums[r])
-        #         l+=1
-        #         r+=1
-        # return len(nums)
-
+class Solution(object):
+    def lengthOfLIS(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
         LIS =[1]*len(nums)
 
         for i in range(len(nums)-1,-1,-1):
@@ -18,9 +12,3 @@ class Solution:
                     LIS[i] = max(LIS[i],1+LIS[j])
         
         return max(LIS)
-
-        #O(n^2)
-        #
-
-                
-        
