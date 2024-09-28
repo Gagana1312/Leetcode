@@ -16,26 +16,44 @@ class Solution(object):
         # else:
         #     return -1
 
-        coins.sort()
-        memo = {0:0}
+#         coins.sort()
+#         memo = {0:0}
 
-        def min_coins(amt):
-            if amt in memo:
-                return memo[amt]
-            minn = float('inf')
+#         def min_coins(amt):
+#             if amt in memo:
+#                 return memo[amt]
+#             minn = float('inf')
+#             for coin in coins:
+#                 diff= amt - coin
+#                 if diff<0:
+#                     break
+#                 minn = min(minn, 1+min_coins(diff))
+#             memo[amt] = minn
+                
+#             return minn
+#         result =min_coins(amount)
+#         if result <float('inf'):
+#             return result
+#         else:
+#             return -1
+
+
+        coins.sort()
+        dp =[0]*(amount+1)
+
+        for i in range(1, amount+1):
+            minn= float('inf')
             for coin in coins:
-                diff= amt - coin
+                diff = i-coin
                 if diff<0:
                     break
-                minn = min(minn, 1+min_coins(diff))
-            memo[amt] = minn
-                
-            return minn
-        result =min_coins(amount)
-        if result <float('inf'):
-            return result
+                minn = min(minn, dp[diff]+1)
+            dp[i] = minn
+        
+
+        if dp[amount] <float('inf'):
+            return dp[amount]
         else:
             return -1
-        
 
         
