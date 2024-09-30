@@ -6,7 +6,7 @@ class Solution(object):
         """
         res =[]
         for i in operations:
-            if i.lstrip('-').isdigit():
+            if i.strip('-').isdigit():
                 res.append(int(i))
             elif i == 'C' and len(res)>=1:
                 res.pop()
