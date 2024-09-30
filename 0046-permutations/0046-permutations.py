@@ -1,5 +1,21 @@
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
+        # BackTracking
+        # n= len(nums)
+        # res,sol=[],[]
+
+        # def dfs():
+        #     if len(sol) == n:
+        #         res.append(sol[:])
+        #         return
+            
+        #     for i in nums:
+        #         if i not in sol:
+        #             sol.append(i)
+        #             dfs()
+        #             sol.pop()
+        # dfs()
+        # return res
 #         if len(nums) == 0:
 #             return [[]]
         
@@ -35,14 +51,14 @@ class Solution:
 
         def dfs():
             if len(sol) == n:
-                res.append(sol[:])
+                res.append(sol.copy())
                 return
             
             for i in nums:
                 if i not in sol:
                     sol.append(i)
                     dfs()
-                    sol.pop()
+                    sol.remove(i)
         dfs()
         return res
          
