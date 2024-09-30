@@ -5,20 +5,59 @@ class Solution(object):
         :type target: int
         :rtype: List[List[int]]
         """
-        res = []
+        res,sol=[],[]
+        nums = candidates
+        n= len(nums)
 
-        def dfs(i, cur, total):
-            if total == target:
-                res.append(cur[:])
+        def dfs(i, cur_summ):
+            if cur_summ == target:
+                res.append(sol[:])
                 return
-            if i >= len(candidates) or total > target:
+            
+            if cur_summ > target or i==n:
                 return
 
-            cur.append(candidates[i])
-            dfs(i, cur, total + candidates[i])
-            cur.pop()
-            dfs(i + 1, cur, total)
-
-        dfs(0, [], 0)
+            dfs(i+1,cur_summ)
+            sol.append(nums[i])
+            dfs(i,cur_summ+nums[i])
+            sol.remove(nums[i])
+        dfs(0,0)
         return res
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        # res = []
+
+        # def dfs(i, cur, total):
+        #     if total == target:
+        #         res.append(cur[:])
+        #         return
+            
+        #     if i >= len(candidates) or total > target:
+        #         return
+
+        #     cur.append(candidates[i])
+        #     dfs(i, cur, total + candidates[i])
+        #     cur.pop()
+        #     dfs(i + 1, cur, total)
+
+        # dfs(0, [], 0)
+        # return res
         
