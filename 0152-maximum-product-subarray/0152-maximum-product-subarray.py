@@ -1,17 +1,24 @@
-class Solution:
-    def maxProduct(self, nums: List[int]) -> int:
-        res = max(nums)
-        curMin, curMax = 1, 1
+class Solution(object):
+    def maxProduct(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+
+        res = max(nums) 
+        curmin, curmax = 1,1
 
         for n in nums:
             if n==0:
-                curMin, curMax =1,1
+                curmin, curmax=1,1
                 continue
-            temp = curMax*n
-            curMax = max(n*curMax, n*curMin,n)
-            curMin = min(temp, n*curMin,n)
-            res = max(curMax, res)
+            
+            tmp = curmax*n
+            
+            curmax = max(n*curmax, n*curmin,n)
+            curmin = min(tmp, n*curmin,n)
+            res = max(res, curmax)
         return res
 
-        #O(n) time complexity
-        #O(1) memory complexity
+
+        
