@@ -33,9 +33,9 @@ class Solution(object):
                     res.append(node.right.val)
             ans.append(level)
             res.sort()
-            if len(res)>=k:
-                value = res[k-1]
-        return value
+            # if len(res)>=k:
+            #     value = res[k-1]
+        return res[k-1]
             
 
         
